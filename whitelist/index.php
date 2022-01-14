@@ -1,8 +1,8 @@
 <head>
-  <link rel="stylesheet" href="https://intern.privatnetz.org/generic/css/ig_main.css" type="text/css">
+  <link rel="stylesheet" href="../common/ig_main.css" type="text/css">
 </head>
 <?php
-require_once('../common/dbconnect.php');
+require_once('__DIR__/common/dbconnect.php');
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
