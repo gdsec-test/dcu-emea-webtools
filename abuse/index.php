@@ -10,7 +10,7 @@
  <p><input type="submit" /></p>
 </form>
 <?php
-require_once('__DIR__/common/dbconnect.php');
+require_once('../common/dbconnect.php');
 function test_input($data) {
 	$data = trim($data);
  	$data = stripslashes($data);
