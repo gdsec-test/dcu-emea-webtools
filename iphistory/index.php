@@ -8,7 +8,7 @@
  <p><input type="submit" /></p>
 </form>
 <?php
-require_once('__DIR__/common/dbconnect.php');
+require_once('../common/dbconnect.php');
 
 //INPUT
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
