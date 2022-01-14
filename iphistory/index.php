@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://intern.privatnetz.org/generic/css/ig_main.css" type="text/css">
+    <link rel="stylesheet" href="../common/ig_main.css" type="text/css">
 </head>
 <body>
 <form action="index.php" method="post">
@@ -8,7 +8,7 @@
  <p><input type="submit" /></p>
 </form>
 <?php
-require_once('../common/dbconnect.php');
+require_once('__DIR__/common/dbconnect.php');
 
 //INPUT
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

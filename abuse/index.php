@@ -1,6 +1,6 @@
 <html>
 <head>
-  <link rel="stylesheet" href="https://intern.privatnetz.org/generic/css/ig_main.css" type="text/css">
+  <link rel="stylesheet" href="../common/ig_main.css" type="text/css">
 </head>
 <body>
 <h3>Closed Abuse Issues</h3>
@@ -10,7 +10,7 @@
  <p><input type="submit" /></p>
 </form>
 <?php
-require_once('../common/dbconnect.php');
+require_once('__DIR__/common/dbconnect.php');
 function test_input($data) {
 	$data = trim($data);
  	$data = stripslashes($data);

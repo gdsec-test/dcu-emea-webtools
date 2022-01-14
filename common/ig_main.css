@@ -1,0 +1,211 @@
+body
+{
+	background: #8C969C;
+	color: #000000;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 5px 5px 10px 5px;
+}
+a:link
+{
+	color: #22229C;
+}
+a:visited
+{
+	color: #22229C;
+}
+a:hover, a:active
+{
+	color: #FF4400;
+}
+.page
+{
+	background: #9C2727;
+	color: #000000;
+}
+td, p, li
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.smallfont td
+{
+	font: 9px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tborder
+{
+	background: #D1D1E1;
+	color: #000000;
+	border: 1px solid #0B198C;
+}
+.tcat
+{
+	background: #869BBF /* url(../images/gradients/gradient_tcat.gif) */ repeat-x top left;
+	color: #FFFFFF;
+	font: bold 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tcat a:link
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.tcat a:visited
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active
+{
+	color: #FFFF66;
+	text-decoration: underline;
+}
+.thead, th
+{
+	background: #5C7099 /* url(../images/gradients/gradient_thead.gif) */ repeat-x top left;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.thead a:link
+{
+	color: #FFFFFF;
+}
+.thead a:visited
+{
+	color: #FFFFFF;
+}
+.thead a:hover, .thead a:active
+{
+	color: #FFFF00;
+}
+.tfoot
+{
+	background: #3E5C92;
+	color: #E0E0F6;
+}
+.tfoot a:link
+{
+	color: #E0E0F6;
+}
+.tfoot a:visited
+{
+	color: #E0E0F6;
+}
+.tfoot a:hover, .tfoot a:active
+{
+	color: #FFFF66;
+}
+.alt1, .alt1Active
+{
+	background: #F5F5FF;
+	color: #000000;
+}
+.alt2, .alt2Active
+{
+	background: #E1E4F2;
+	color: #000000;
+}
+.alt3
+{
+	background: #FFED79;
+	color: #000000;
+}
+.alt4
+{
+	background: #E82727;
+	color: #000000;
+}
+.wysiwyg
+{
+	background: #F5F5FF;
+	color: #000000;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+textarea, input
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	background: #E4E6E8;
+        border: outset 1px;
+        /*color: #000000;*/
+}
+input:focus
+{
+	background-color: #EEF0F2;
+}
+textarea:focus
+{
+	background-color: #EEF0F2;
+}
+.button
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.warn input[type="submit"]:hover
+{
+	background-color: #FF2B18 
+}
+select
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	background: #EEF0F2;
+	border: outset 1px;
+}
+optgroup
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	font-style: italic;
+	background: #F5F5FF;
+	border: outset 1px;
+}
+.smallfont
+{
+	font: 9px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.time
+{
+	color: #666686;
+}
+.navbar
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.highlight
+{
+	color: #FF0000;
+	font-weight: bold;
+}
+.fjsel
+{
+	background: #3E5C92;
+	color: #E0E0F6;
+}
+.fjdpth0
+{
+	background: #F7F7F7;
+	color: #000000;
+}
+legend
+{
+	color: #22229C;
+	font: 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+/* ***** small padding on 'thead' elements ***** */
+td.thead, div.thead,th { padding: 4px; }
+
+/* ***** basic styles for multi-page nav elements */
+.pagenav a { text-decoration: none; }
+.pagenav td { padding: 2px 4px 2px 4px; }
+
+/* ***** define margin and font-size for elements inside panels ***** */
+.fieldset { margin-bottom: 6px; }
+.fieldset, .fieldset td, .fieldset p, .fieldset li { font-size: 11px; }
+
+/* ***** don't change the following ***** */
+form { display: inline; }
+label { cursor: default; }
+.normal { font-weight: normal; }
+.inlineimg { vertical-align: middle; }
+/* ***** active table cells (IE only) ***** */
+/* .alt1Active, .alt2Active { behavior: url(clientscript/activecell.htc); } */
+.topright
+{
+	vertical-align: top;
+	text-align: right;
+}
