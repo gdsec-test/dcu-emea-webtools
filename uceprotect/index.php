@@ -16,8 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 else {
     echo "<h2>Current uceprotect listings</h2>";
-    $sql = "SELECT address, host, hits, first, last FROM uceprotect.listing WHERE done = '0' ORDER BY hits DESC;";
-    $result = $connection->query($sql);
+    $sql = $connection->prepare("SELECT address, host, hits, first, last FROM uceprotect.listing WHERE done = '0' ORDER BY hits DESC;");
+    $sql->execute();
+    $result = $connection->get_result();
     if ($result->num_rows > 0) {
         // output data of each row
     echo "<table><tr><td><b>IP</b></td><td><b>Hostname</b></td><td><b>Hits</b></td><td><b>First Hit</b></td><td><b>Last Hit</b></td></tr>";
@@ -28,7 +29,6 @@ else {
     } else {
         echo "No Listings <3";
     }
-$connection->close();
 }
 
 // Test, if Input value is an IPv4 address
@@ -46,8 +46,9 @@ function test_input($data) {
 
 echo "<h3>UCE-Protect History for ip: " . $ip."</h3>";
 
-$sql = "SELECT address, date FROM uceprotect.archive WHERE address = '{$ip}' ORDER BY date DESC;";
-$result = $connection->query($sql);
+$sql = $connection->prepare("SELECT address, date FROM uceprotect.archive WHERE address = '{$ip}' ORDER BY date DESC;");
+$sql->execute();
+$result = $connection->get_result();
 
 if ($result->num_rows > 0) {
   // output data of each row
