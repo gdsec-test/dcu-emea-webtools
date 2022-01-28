@@ -16,9 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 else {
     echo "<h2>Current uceprotect listings</h2>";
-    $stmt = $connection->prepare("SELECT address, host, hits, first, last FROM uceprotect.listing WHERE done = '0' ORDER BY hits DESC;");
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $sql = "SELECT address, host, hits, first, last FROM uceprotect.listing WHERE done = '0' ORDER BY hits DESC;";
+    $result = $connection->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
     echo "<table><tr><td><b>IP</b></td><td><b>Hostname</b></td><td><b>Hits</b></td><td><b>First Hit</b></td><td><b>Last Hit</b></td></tr>";
@@ -46,9 +45,8 @@ function test_input($data) {
 
 echo "<h3>UCE-Protect History for ip: " . $ip."</h3>";
 
-$stmt = $connection->prepare("SELECT address, date FROM uceprotect.archive WHERE address = '{$ip}' ORDER BY date DESC;");
-$stmt->execute();
-$result = $stmt->get_result();
+$sql = "SELECT address, date FROM uceprotect.archive WHERE address = '{$ip}' ORDER BY date DESC;";
+$result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
