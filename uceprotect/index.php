@@ -15,12 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $ip = test_input($_POST["ip"]);
 }
 else {
-    echo "<h2>Cureent uceprotect listings</h2>";
+    echo "<h2>Current uceprotect listings</h2>";
     $sql = "SELECT address, host, hits, first, last FROM uceprotect.listing WHERE done = '0' ORDER BY hits DESC;";
     $result = $connection->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
-    echo "<table><tr><td>IP</td><td>Hostname</td><td>Hits</td><td>First Hit</td><td>Last Hit</td></tr>";
+    echo "<table><tr><td><b>IP</b></td><td><b>Hostname</b></td><td><b>Hits</b></td><td><b>First Hit</b></td><td><b>Last Hit</b></td></tr>";
         while($row = $result->fetch_assoc()) {
             echo "<tr><td>" . $row["address"]. "</td><td>" . $row["host"]. "</td><td>" . $row["hits"]. "</td><td>" . $row["first"]. "</td><td>" . $row["last"]. "</td></tr>";
         }
