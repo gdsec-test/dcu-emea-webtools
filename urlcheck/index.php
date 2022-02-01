@@ -17,7 +17,7 @@
             for ($i = 0; $i < count($arr); $i++) {
                 $host = parse_url($arr[$i], PHP_URL_HOST);
                 $ip = gethostbyname($host);
-                $ch = curl_init($arr);
+                $ch = curl_init($arr[$i]);
                 curl_exec($ch);
                 $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 echo "Analysis for: ". $arr[$i] ."<br />";
@@ -27,7 +27,7 @@
         }
 
         function sanitize($data) {
-            $data = trim($data);
+            $data = trim($data, "\n\r\t\v\x00");
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
             $data = str_ireplace("hxxp", "http", $data);
