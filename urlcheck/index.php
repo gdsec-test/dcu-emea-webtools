@@ -18,6 +18,7 @@
                 $host = parse_url($arr[$i], PHP_URL_HOST);
                 $ip = gethostbyname($host);
                 $ch = curl_init($arr[$i]);
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,10);
                 curl_exec($ch);
                 $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 echo "Analysis for: ". $arr[$i] ."<br />";
