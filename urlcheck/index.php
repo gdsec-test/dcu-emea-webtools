@@ -36,6 +36,7 @@
             $data = str_ireplace("hxxp", "http", $data);
             $data = str_replace("]", "" , $data);
             $data = str_replace("[", "", $data);
+            $data = str_replace(" ", "", $data);
             return $data;
         }
     ?>
