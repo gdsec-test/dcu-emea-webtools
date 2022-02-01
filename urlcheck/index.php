@@ -29,7 +29,7 @@
             $data = trim($data);
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
-            $data = str_replace('hxxp', 'http' $data);
+            $data = str_replace("hxxp", "http", $data);
             $data = str_replace(']', , $data);
             $data = str_replace('[', , $data);
             return $data;
