@@ -5,7 +5,8 @@
     <body>
         <h3>URL De-Sanitizer</h3>
         <form action="index.php" method="post">
-            <p>URL: <input type="textarea" name="url" rows="10" cols="50" /></p>
+            <label for="url">URL</label>
+            <textarea id="url" name="url" rows="10" cols="50"></textarea></p>
             <p><input type="submit" /></p>
         </form>
     <?php
