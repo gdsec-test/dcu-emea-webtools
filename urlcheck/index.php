@@ -5,7 +5,7 @@
     <body>
         <h3>URL De-Sanitizer</h3>
         <form action="index.php" method="post">
-            <p>URL: <input type="textarea" name="url" /></p>
+            <p>URL: <input type="textarea" name="url" rows="10" cols="50" /></p>
             <p><input type="submit" /></p>
         </form>
     <?php
@@ -18,7 +18,7 @@
             curl_exec($ch);
             $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             echo "Analysis for: ". $result ."<br />";
-            echo "<b>".$host . "</b> is hosted at <b>". $ip ."</b>";
+            echo "<b>".$host . "</b> is hosted at <b>". $ip ."</b><br />";
             echo "Return code for the provided URL: <b>". $http_code ."</b>";
         }
 
