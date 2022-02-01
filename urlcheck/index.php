@@ -30,7 +30,6 @@
             $data = trim($data, "\n\r\t\v\x00");
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
-            $data = preg_replace('/[\r\n]^\s*$[\r\n]/m','',$data);
             $data = str_ireplace("hxxp", "http", $data);
             $data = str_replace("]", "" , $data);
             $data = str_replace("[", "", $data);
