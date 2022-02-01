@@ -16,7 +16,7 @@
         //INPUT
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $result = sanitize($_POST["url"]);
-            $host = parse_url($result, PHP_URL_HOST));
+            $host = parse_url($result, PHP_URL_HOST);
             $ip = gethostbyname($host);
             $ch = curl_init($result);
             curl_exec($ch);
