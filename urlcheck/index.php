@@ -13,14 +13,17 @@
         //INPUT
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $result = sanitize($_POST["url"]);
-            $host = parse_url($result, PHP_URL_HOST);
-            $ip = gethostbyname($host);
-            $ch = curl_init($result);
-            curl_exec($ch);
-            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            echo "Analysis for: ". $result ."<br />";
-            echo "<b>".$host . "</b> is hosted at <b>". $ip ."</b><br />";
-            echo "Return code for the provided URL: <b>". $http_code ."</b>";
+            $result = explode("\r\n", $result);
+            for ($i = 0; $i < count($result); $i++) {
+                $host = parse_url($result, PHP_URL_HOST);
+                $ip = gethostbyname($host);
+                $ch = curl_init($result);
+                curl_exec($ch);
+                $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                echo "Analysis for: ". $result ."<br />";
+                echo "<b>".$host . "</b> is hosted at <b>". $ip ."</b><br />";
+                echo "Return code for the provided URL: <b>". $http_code ."</b><br /><br />";
+            }
         }
 
         function sanitize($data) {
