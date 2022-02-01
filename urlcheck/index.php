@@ -22,7 +22,7 @@
             curl_exec($ch);
             $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             echo "Analysis for: ". $result ."<br />";
-            echo $host . "is hosted at ". $ip " - Return code for the provided URL: ". $http_code;
+            echo $host . "is hosted at ". $ip ." - Return code for the provided URL: ". $http_code;
         }
 
         function sanitize($data) {
