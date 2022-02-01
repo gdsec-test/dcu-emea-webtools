@@ -20,6 +20,7 @@
                 $ch = curl_init($arr[$i]);
                 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,10);
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_exec($ch);
                 $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 echo "Analysis for: ". $arr[$i] ."<br />";
