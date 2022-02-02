@@ -12,7 +12,7 @@
     <?php
         //INPUT
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $result = sanitize($_POST["url"]); // cast $_POST to string, to avoid an array injection
+            $result = sanitize((string)$_POST["url"]); // cast $_POST to string, to avoid an array injection
             $arr = explode("\r\n", $result);
             for ($i = 0; $i < count($arr); $i++) {
                 $host = parse_url($arr[$i], PHP_URL_HOST);
