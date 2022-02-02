@@ -12,7 +12,7 @@
     <?php
         //INPUT
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $result = sanitize($_POST["url"]);
+            $result = sanitize((string)$_POST["url"]); // cast $_POST to string, to avoid an array injection
             $arr = explode("\r\n", $result);
             for ($i = 0; $i < count($arr); $i++) {
                 $host = parse_url($arr[$i], PHP_URL_HOST);
@@ -30,13 +30,11 @@
         }
 
         function sanitize($data) {
-            $data = trim($data, "\n\r\t\v\x00");
+            $data = trim($data, " \n\r\t\v\x00");
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
-            $data = str_ireplace("hxxp", "http", $data);
-            $data = str_replace("]", "" , $data);
-            $data = str_replace("[", "", $data);
-            $data = str_replace(" ", "", $data);
+            $data = preg_replace('/(hxxp)+/', 'http', $data);
+            $data = preg_replace('/[\[\]\s]//', '', $data);
             return $data;
         }
     ?>
