@@ -33,7 +33,7 @@
             $data = trim($data, " \n\r\t\v\x00");
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
-            $data = str_ireplace(array('hxxp', '[', ']', ' '), array('http', '', '', ''), $data);
+            $data = str_ireplace(array('hxxp', '[dot]', '[', ']', ' '), array('http', '.', '', '', ''), $data);
             return $data;
         }
     ?>
