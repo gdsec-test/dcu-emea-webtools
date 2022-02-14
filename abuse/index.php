@@ -28,7 +28,7 @@ else {
 }
 
 if ($_GET["action"] == "reopen") {
-        $sql = "UPDATE abuse.abuse SET abuse_status_id = 2 WHERE abuse_id = '" . ${aid} . "';";
+        $sql = "UPDATE abuse.abuse SET abuse_status_id = 2, sanction_start_date = NOW() WHERE abuse_id = '" . ${aid} . "';";
         $result = $connection->query($sql);
 	$connection->close();
 }
