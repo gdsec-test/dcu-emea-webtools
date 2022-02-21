@@ -35,6 +35,8 @@
 	                echo "Analysis for: ". $arr[$i] ."<br />";
         	        echo "<b>".$host . "</b> is hosted at <b>". $ip ."</b> => (". $as . ") => (" . $abusec[0]['entries'][0] . ")<br />";
                     echo "Return code for the provided URL: <b>". $http_code ."</b><br /><br />";
+                } else {
+                    echo $arr[$i] . "has been skipped, as this seems not to be a valid URL!";
                 }
             }
         }
