@@ -1,5 +1,5 @@
 <?php 
-    $version = "1.4"
+    $version = "2.0"
     /* URL-Checker 
     DO NOT any manual changes to this code. It will be vanished with next deployment.
     Codebase: https://github.com/gdcorp-infosec/dcu-emea-webtools
@@ -78,14 +78,14 @@
                 if (is_string($host)) {
                     echo "<br />Analysis for: ". $arr[$i] ."<br />";
                     echo "<b>".$host . "</b> is hosted at <b>". $ip ."</b> => (". $as . ") => (" . $abusec[0]['entries'][0] . ")<br />";
-                    if (!$mobile) {
-                        echo "Return code for the provided URL: <b>". $http_code ."</b><br />";
-                    } else {
+                    if ($mobile) {
                         $n = 0;
                         foreach ($useragent as $os => $agent){
                             echo "Return code for the provided URL: <b>". $http_code[$n] ."</b> - with user agent: <b>". array_keys($useragent)[$n] ."</b><br />";
                             $n++;
                         }
+                    } else {
+                        echo "Return code for the provided URL: <b>". $http_code ."</b><br />";
                     }
                 } else {
                     echo $arr[$i] . "has been skipped, as this seems not to be a valid URL!";
