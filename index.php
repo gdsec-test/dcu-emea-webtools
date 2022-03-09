@@ -12,7 +12,7 @@
             $uceRLastRun = $connection->query($uceQLastRun);
             $uceQHits = "SELECT SUM(hits) AS hits FROM uceprotect.listing WHERE done = 0;";
             $uceRHits = $connection->query($uceQHits);
-            $uceQHosts = "SELECT COUNT(address) AS hosts FROM uceprotectlisting WHERE done = 0;";
+            $uceQHosts = "SELECT COUNT(address) AS hosts FROM uceprotect.listing WHERE done = 0;";
             $uceRHosts = $connection->query($uceQHosts);
             $connection->close();
             while($row = $uceRHits->fetch_assoc()) {
