@@ -39,6 +39,7 @@
                     <a href="iphistory/index.php" target="_new">Routing history for additional/net ips (restricted)</a><br />
                     <a href="uceprotect/index.php" target="_new">Overview of current UCEprotect listings (restricted)</a><br />
                     <a href="urlcheck/index.php" target="_new">URL De-Sanitizer/Checker</a><br />
+                    <a href="urlhistory/index.php" target="_new">URL Tracker</a><br />
                     <a href="whitelist/index.php" target="_new">Abuse Whitelist S4Y (restricted)</a><br />
                 </td>
             </tr>
@@ -52,6 +53,7 @@
             </tr>
             <tr>
                 <td>
+                    <a href="https://tools.ig.mass.systems/abuse-manager/" target="_new">S4Y Abuse Manager</a><br />
                     <a href="https://tools.ig.mass.systems/infotool" target="_new">S4Y Infotool</a><br />
                     <a href="https://tools.ig.mass.systems/sm" target="_new">S4Y ServerManager</a><br />
                     <a href="https://tools.ig.mass.systems/ipm" target="_new">S4Y IP Manager</a><br />
