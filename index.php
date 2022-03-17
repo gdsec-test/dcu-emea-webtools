@@ -58,6 +58,7 @@
                     <a href="https://tools.ig.mass.systems/sm" target="_new">S4Y ServerManager</a><br />
                     <a href="https://tools.ig.mass.systems/ipm" target="_new">S4Y IP Manager</a><br />
                     <a href="https://tools.ig.mass.systems/blockingmanagement" target="_new">S4Y Blockingmanager</a><br />
+                    <a href="https://otrs.privatnetz.org/otrs/index.pl" target="_new">OTRS Ticket System</a><br />
                 </td>
             </tr>
         </table>

@@ -25,11 +25,13 @@
         $revarr = array($oct[3], $oct[2], $oct[1], $oct[0]);
         $revip = implode(".", $revarr);
         $abusec = dns_get_record("$revip.abuse-contacts.abusix.zone.", DNS_TXT);
+        $agent = $_SERVER['HTTP_USER_AGENT'];
         $ch = curl_init($arr[$i]);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,10);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_PROXY, $proxy);
+        curl_setopt($ch, CURLOPT_USERAGENT, $agent);
         curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
