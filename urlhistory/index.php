@@ -36,18 +36,19 @@
                     <tr>
                         <th onclick="sortMalware(0)">Domain</th>
                         <th onclick="sortMalware(1)">IP</th>
-                        <th onclick="sortMalware(2)">AS</th>
-                        <th onclick="sortMalware(3)">Category</th>
-                        <th onclick="sortMalware(4)">Last seen</th>
-                        <th onclick="sortMalware(5)">HTTP Code</th>
-                        <th onclick="sortMalware(6)">First seen</th>
-                        <th onclick="sortMalware(7)">First IP</th>
-                        <th onclick="sortMalware(8)">URL</th>
+                        <th onclick="sortMalware(2)">PTR</th>
+                        <th onclick="sortMalware(3)">AS</th>
+                        <th onclick="sortMalware(4)">Category</th>
+                        <th onclick="sortMalware(5)">Last seen</th>
+                        <th onclick="sortMalware(6)">HTTP Code</th>
+                        <th onclick="sortMalware(7)">First seen</th>
+                        <th onclick="sortMalware(8)">First IP</th>
+                        <th onclick="sortMalware(9)">URL</th>
                     </tr>
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['lasthost']}</td><td>{$row['lastip']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {
@@ -61,18 +62,19 @@
                     <tr>
                         <th onclick="sortPhish(0)">Domain</th>
                         <th onclick="sortPhish(1)">IP</th>
-                        <th onclick="sortPhish(2)">AS</th>
-                        <th onclick="sortPhish(3)">Category</th>
-                        <th onclick="sortPhish(4)">Last seen</th>
-                        <th onclick="sortPhish(5)">HTTP Code</th>
-                        <th onclick="sortPhish(6)">First seen</th>
-                        <th onclick="sortPhish(7)">First IP</th>
-                        <th onclick="sortPhish(8)">URL</th>
+                        <th onclick="sortPhish(2)">PTR</th>
+                        <th onclick="sortPhish(3)">AS</th>
+                        <th onclick="sortPhish(4)">Category</th>
+                        <th onclick="sortPhish(5)">Last seen</th>
+                        <th onclick="sortPhish(6)">HTTP Code</th>
+                        <th onclick="sortPhish(7)">First seen</th>
+                        <th onclick="sortPhish(8)">First IP</th>
+                        <th onclick="sortPhish(9)">URL</th>
                      </tr>
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['lasthost']}</td><td>{$row['lastip']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {
@@ -86,18 +88,19 @@
                     <tr>
                         <th onclick="sortTrade(0)">Domain</th>
                         <th onclick="sortTrade(1)">IP</th>
-                        <th onclick="sortTrade(2)">AS</th>
-                        <th onclick="sortTrade(3)">Category</th>
-                        <th onclick="sortTrade(4)">Last seen</th>
-                        <th onclick="sortTrade(5)">HTTP Code</th>
-                        <th onclick="sortTrade(6)">First seen</th>
-                        <th onclick="sortTrade(7)">First IP</th>
-                        <th onclick="sortTrade(8)">URL</th>
+                        <th onclick="sortTrade(2)">PTR</th>
+                        <th onclick="sortTrade(3)">AS</th>
+                        <th onclick="sortTrade(4)">Category</th>
+                        <th onclick="sortTrade(5)">Last seen</th>
+                        <th onclick="sortTrade(6)">HTTP Code</th>
+                        <th onclick="sortTrade(7)">First seen</th>
+                        <th onclick="sortTrade(8)">First IP</th>
+                        <th onclick="sortTrade(9)">URL</th>
                      </tr>
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['lasthost']}</td><td>{$row['lastip']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {

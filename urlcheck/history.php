@@ -37,7 +37,7 @@
         curl_close($ch);
         if (is_string($host)) {
             $url = base64_encode($arr[$i]);
-            $sql = "INSERT INTO `listing` (`firstip`, `firstas`, `firsthost`, `lastip`, `lastas`, `lasthost`, `category`, `url`, `domain`, `rc`, `firsthit`, `lasthit`) VALUES ('$ip', '$asn', '$host', '$ip', '$asn', '$host', '$module', '$url', '$reverse', '$http_code', DATE_FORMAT(NOW(), \"%Y-%m-%d %H:%i\"), DATE_FORMAT(NOW(), \"%Y-%m-%d %H:%i\")) ON DUPLICATE KEY UPDATE `lastip`=VALUES(lastip), `lastas`=VALUES(lastas), `lasthost`=VALUES(lasthost), `rc`=VALUES(rc), `lasthit`=VALUES(lasthit), `done`='false';";
+            $sql = "INSERT INTO `listing` (`firstip`, `firstas`, `firsthost`, `lastip`, `lastas`, `lasthost`, `category`, `url`, `domain`, `rc`, `firsthit`, `lasthit`) VALUES ('$ip', '$asn', '$reverse', '$ip', '$asn', '$reverse', '$module', '$url', '$host', '$http_code', DATE_FORMAT(NOW(), \"%Y-%m-%d %H:%i\"), DATE_FORMAT(NOW(), \"%Y-%m-%d %H:%i\")) ON DUPLICATE KEY UPDATE `lastip`=VALUES(lastip), `lastas`=VALUES(lastas), `lasthost`=VALUES(lasthost), `rc`=VALUES(rc), `lasthit`=VALUES(lasthit), `done`='false';";
             if ($connection->query($sql)) {
                 echo "{$host} has been added to the database!\r\n";
             } else {
