@@ -31,10 +31,10 @@
                 <th>Link list</th>
             </tr>
             <tr>
-                <th>DCU internal</th>
+                <th><a href="#" onclick="hidedcu()">DCU internal</a></th>
             </tr>
             <tr>
-                <td>
+                <td style="display: block" id="dcu">
                     <a href="abuse/index.php" target="_new">Re-Open closed abuse cases (restricted)</a><br />
                     <a href="iphistory/index.php" target="_new">Routing history for additional/net ips (restricted)</a><br />
                     <a href="uceprotect/index.php" target="_new">Overview of current UCEprotect listings (restricted)</a><br />
@@ -49,10 +49,10 @@
                 </td>
             </tr>
             <tr>
-                <th>S4Y Tools</th>
+                <th<a href="#" onclick="hides4u()">S4Y Tools</a></th>
             </tr>
             <tr>
-                <td>
+                <td style="display: block" id="s4u">
                     <a href="https://tools.ig.mass.systems/abuse-manager/" target="_new">S4Y Abuse Manager</a><br />
                     <a href="https://tools.ig.mass.systems/infotool" target="_new">S4Y Infotool</a><br />
                     <a href="https://tools.ig.mass.systems/sm" target="_new">S4Y ServerManager</a><br />
@@ -82,5 +82,27 @@
                 </td>
             </tr>
         </table>
+        <script type="text/javascript">
+            var dcuvisible = true;
+            var s4uvisible = true;
+            function hides4u() { 
+                if (s4uvisible) {
+                    document.getElementById('s4u').style.display = 'none';
+                    s4uvisible = false;
+                } else {
+                    document.getElementById('s4u').style.display = 'block';
+                    s4uvisible = true;
+                }
+            }
+            function hidedcu() {
+                if (dcuvisible) {
+                    document.getElementById('dcu').style.display = 'none';
+                    dcuvisible = false;
+                } else {
+                    document.getElementById('dcu').style.display = 'block';
+                    dcuvisible = true;
+                }
+            }
+        </script>
     </body>
 </html>
