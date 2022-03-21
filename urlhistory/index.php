@@ -17,11 +17,12 @@
             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // for debugging purposes forward mysql-errors to php
             if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["action"])) {
                 if ($_GET["action"] === "resolve") {
-                    $url = $_GET["url"];
-                    $category = $_GET["cat"];
-                    $sql = "UPDATE `listing` SET `done` = 'true' WHERE `url` = '$url' AND `category` = '$category';";
-                    $result = $connection->query($sql);
-                    if ($result) {
+                    $id = $_GET["id"];
+                    $sql = $connection->prepare("UPDATE `listing` SET `done` = 'true' WHERE `id` = ?;");
+                    $sql->bind_param("i", $id);
+                    $sql->execute();
+                    $sql->store_result();
+                    if ($sql->num_rows > 0) {
                         echo "Entry has been set to done";
                     } else {
                         echo "Something went wrong with {$url}";
@@ -48,7 +49,7 @@
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {
@@ -74,7 +75,7 @@
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {
@@ -100,7 +101,7 @@
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&cat={$row['category']}&url={$row['url']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {

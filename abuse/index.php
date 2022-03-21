@@ -20,17 +20,18 @@ function test_input($data) {
 	}
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
 	$aid = test_input($_GET["aid"]);
 }
 else {
 	die("You don't have to be here!");
 }
 
-if ($_GET["action"] == "reopen") {
-        $sql = "UPDATE abuse.abuse SET abuse_status_id = 2, sanction_start_date = NOW() WHERE abuse_id = '" . ${aid} . "';";
-        $result = $connection->query($sql);
-	$connection->close();
+if ($_GET["action"] === "reopen") {
+        $sql = $connection->prepare("UPDATE abuse.abuse SET abuse_status_id = 2, sanction_start_date = NOW() WHERE abuse_id = ?;");
+        $sql->bind_param("i", $aid);
+        $sql->execute();
+        $connection->close();
 }
 
 $sql = "SELECT a.abuse_id AS aid, a.contract_id as cid FROM abuse.abuse AS a WHERE abuse_status_id = 6 AND create_date BETWEEN (NOW() - INTERVAL 30 DAY) AND NOW() ORDER BY create_date DESC;";

@@ -45,8 +45,10 @@ function test_input($data) {
 
 echo "<h3>UCE-Protect History for ip: " . $ip."</h3>";
 
-$sql = "SELECT address, date FROM uceprotect.archive WHERE address = '{$ip}' ORDER BY date DESC;";
-$result = $connection->query($sql);
+$sql = $connection->prepare("SELECT address, date FROM uceprotect.archive WHERE address = '?' ORDER BY date DESC;");
+$sql->bind_param("s", $ip);
+$sql->execute();
+$result = $sql->get_result();
 
 if ($result->num_rows > 0) {
   // output data of each row

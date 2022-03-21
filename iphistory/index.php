@@ -11,7 +11,7 @@
 require_once('../common/dbconnect.php');
 
 //INPUT
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $ip = test_input($_POST["ip"]);
 }
 else {
