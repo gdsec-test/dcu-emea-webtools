@@ -10,17 +10,18 @@ function test_input($data) {
   return $data;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
   $cid = test_input($_GET["cid"]);
 }
 else {
   die("You don't have to be here!");
 }
 
-if ($_GET["action"] == "delete") {
-        $sql = "DELETE FROM abuse.whitelist_customer WHERE customer_data_id = '" . ${cid} . "';";
-        $result = $connection->query($sql);
-	$connection->close();
+if ($_GET["action"] === "delete") {
+        $sql = $connection->prepare("DELETE FROM abuse.whitelist_customer WHERE customer_data_id = ?;");
+        $sql->bind_param("i", $cid);
+        $sql->execute();
+        $connection->close();
 }
 
 echo "<h3>Abuse Whitelist</h3>";

@@ -33,8 +33,10 @@ function test_input($data) {
 
 echo "<h3>Routing history for ip: " . $ip."</h3>";
 
-$sql = "select t.name as Action, r.entry_date as Timestamp, r.target_ip_address as IP, c.contract_id as Contract, c.company_id as Company from router.ip_route_log as r left join router.log_type as t on r.log_type_id = t.log_type_id left join ip_entity.ip as i on r.ip_address = i.ip_address left join ip_entity.ip_contract_binding as c on i.ip_id = c.ip_id where r.ip_address = '{$ip}' and r.entry_date > c.assign_date_time and c.release_date_time IS NULL order by r.entry_date desc;";
-$result = $connection->query($sql);
+$sql = $connection->prepare("select t.name as Action, r.entry_date as Timestamp, r.target_ip_address as IP, c.contract_id as Contract, c.company_id as Company from router.ip_route_log as r left join router.log_type as t on r.log_type_id = t.log_type_id left join ip_entity.ip as i on r.ip_address = i.ip_address left join ip_entity.ip_contract_binding as c on i.ip_id = c.ip_id where r.ip_address = '?' and r.entry_date > c.assign_date_time and c.release_date_time IS NULL order by r.entry_date desc;");
+$sql->bind_param("s", $ip);
+$sql->execute();
+$result = $sql->get_result();
 
 if ($result->num_rows > 0) {
   // output data of each row
