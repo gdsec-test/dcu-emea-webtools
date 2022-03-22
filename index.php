@@ -49,7 +49,7 @@
                 </td>
             </tr>
             <tr>
-                <th<a href="#" onclick="hides4u()">S4Y Tools</a></th>
+                <th><a href="#" onclick="hides4u()">S4Y Tools</a></th>
             </tr>
             <tr>
                 <td style="display: block" id="s4u">
