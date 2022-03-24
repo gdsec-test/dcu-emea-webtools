@@ -6,7 +6,7 @@
         <?php
             // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // can be used for debugging purposes. Passes mysql errors towards php
             require_once("common/uceconnect.php");
-            $certq1 = "SELECT module, max(FROM_UNIXTIME(abused)) AS last FROM certbund.listing GROUP BY module ORDER BY module ASC;";
+            $certq1 = "SELECT module, max(last) AS last FROM certbund.listing GROUP BY module ORDER BY module ASC;";
             $certResult1 = $connection->query($certq1);
             $uceQLastRun = "SELECT FROM_UNIXTIME(abused) AS last FROM uceprotect.listing ORDER BY abused DESC LIMIT 1;";
             $uceRLastRun = $connection->query($uceQLastRun);
