@@ -6,7 +6,7 @@
         <?php
             // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // can be used for debugging purposes. Passes mysql errors towards php
             require_once("common/uceconnect.php");
-            $certq1 = "SELECT module, max(last) AS last FROM certbund.listing GROUP BY module ORDER BY module ASC;";
+            $certq1 = "SELECT COUNT(address) AS hits, module, max(last) AS last FROM certbund.listing WHERE done = '0' GROUP BY module ORDER BY module ASC;";
             $certResult1 = $connection->query($certq1);
             $uceQLastRun = "SELECT FROM_UNIXTIME(abused) AS last FROM uceprotect.listing ORDER BY abused DESC LIMIT 1;";
             $uceRLastRun = $connection->query($uceQLastRun);
@@ -68,17 +68,15 @@
                 <th>CERT-Bund</th>
             </tr>
             <tr>
-                <td><?php echo "hits/hosts: {$ucehits}/{$ucehosts}"; ?></td>
-                <td>Last hits: </td>
-            </tr>
-            <tr>
-                <td valign="top"><?php echo "Last run: {$ucelast}"; ?></td>
+                <td valign="top"><?php echo "hits/hosts: {$ucehits}/{$ucehosts}<br />Last run: {$ucelast}"; ?></td>
                 <td>
-                    <?php
-                        while($row = $certResult1->fetch_assoc()) {
-                            echo "{$row['module']}: {$row['last']}<br />";
-                        }
-                    ?>
+                    <table>
+                        <?php 
+                            while($row = $certResult1->fetch_assoc()) {
+                                echo "<tr><td>{$row['module']}: </td><td>{$row['last']} - </td><td>Current Count: {$row['hits']}</td></tr>";
+                            }
+                        ?>
+                    </table>
                 </td>
             </tr>
         </table>
