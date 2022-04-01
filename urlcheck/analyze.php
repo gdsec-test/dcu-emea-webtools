@@ -1,4 +1,5 @@
 <?php
+    require_once '../common/functions.php';
     $mobile = false;
     $result = sanitize((string)$_POST["url"]); // cast $_POST to string, to avoid an array injection
     $arr = explode("\r\n", $result);
@@ -29,6 +30,7 @@
         $revarr = array($oct[3], $oct[2], $oct[1], $oct[0]);
         $revip = implode(".", $revarr);
         $abusec = dns_get_record("$revip.abuse-contacts.abusix.zone.", DNS_TXT);
+        $resolver = get_resolver($host);;
         if(!$mobile) {
             $agent = $_SERVER['HTTP_USER_AGENT'];
             $ch = curl_init($arr[$i]);
@@ -55,7 +57,7 @@
         }
         if (is_string($host)) {
             echo "<br />Analysis for: ". $arr[$i] ."<br />";
-            echo "<b>".$host . "</b> is hosted at <b>". $ip ."</b> => (". $as . ") => (" . $abusec[0]['entries'][0] . ")<br />";
+            echo "<b>{$host}</b> is hosted at <b>{$ip}</b> => ({$as}) => ({$abusec[0]['entries'][0]}) => Authoritative Nameserver: {$resolver}<br />";
             if ($mobile) {
                 $n = 0;
                 foreach ($useragent as $os => $agent){

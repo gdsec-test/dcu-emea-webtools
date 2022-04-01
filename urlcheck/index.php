@@ -1,5 +1,5 @@
 <?php 
-    $version = "3.0"
+    $version = "3.1"
     /* URL-Checker 
     DO NOT any manual changes to this code. It will be vanished with next deployment.
     Codebase: https://github.com/gdcorp-infosec/dcu-emea-webtools
