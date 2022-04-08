@@ -7,9 +7,10 @@
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="../common/ig_main.css" type="text/css">
+        <?php include "../common/gdstyles.html"; ?>
     </head>
     <body>
+    <?php include "../common/gdicon.html"; ?>
         <h1><a href="index.php">URL Tracking <?php echo $version ?></a></h1>
         <h3><a href="#malware">Malware</a> - <a href="#phishing">Phishing</a> - <a href="#copyright">Copyright</a></h3>
         <?php
@@ -33,7 +34,7 @@
             $result = $connection->query($sql);
             if ($result) { ?>
                 <table id="malware">
-                    <caption>Malware</caption>
+                    <caption style="text-align:center;caption-side:top">Malware</caption>
                     <tr>
                         <th onclick="sortMalware(0)">Domain</th>
                         <th onclick="sortMalware(1)">IP</th>
@@ -49,7 +50,7 @@
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td style=\"text-align:center\">{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {
@@ -59,7 +60,7 @@
             $result = $connection->query($sql);
             if ($result) { ?>
                 <table id="phishing">
-                    <caption>Phishing</caption>
+                    <caption style="text-align:center;caption-side:top">Phishing</caption>
                     <tr>
                         <th onclick="sortPhish(0)">Domain</th>
                         <th onclick="sortPhish(1)">IP</th>
@@ -75,7 +76,7 @@
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td style=\"text-align:center\">{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {
@@ -85,7 +86,7 @@
             $result = $connection->query($sql);
             if ($result) { ?>
                 <table id="copyright">
-                    <caption>Copyright / Trademarks</caption>
+                    <caption style="text-align:center;caption-side:top">Copyright / Trademarks</caption>
                     <tr>
                         <th onclick="sortTrade(0)">Domain</th>
                         <th onclick="sortTrade(1)">IP</th>
@@ -101,7 +102,7 @@
                     <?php
                         while ($row = $result->fetch_assoc()) {
                             $url = base64_decode($row["url"]);
-                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td>{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
+                            echo "<tr><td>{$row['domain']}</td><td>{$row['lastip']}</td><td>{$row['lasthost']}</td><td>{$row['lastas']}</td><td>{$row['category']}</td><td>{$row['lasthit']}</td><td style=\"text-align:center\">{$row['rc']}</td><td>{$row['firsthit']}</td><td>{$row['firstip']}</td><td>$url</td><td><a href=\"../urlcheck/index.php?action=recheck&url={$row['url']}\">recheck</a></td><td><a href=\"index.php?action=resolve&id={$row['id']}\">resolve</a></td></tr>";
                         } ?>
                 </table><?php
             } else {

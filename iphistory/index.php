@@ -1,8 +1,9 @@
 <html>
 <head>
-    <link rel="stylesheet" href="../common/ig_main.css" type="text/css">
+    <?php include "../common/gdstyles.html"; ?>
 </head>
 <body>
+<?php include "../common/gdicon.html"; ?>
 <form action="index.php" method="post">
  <p>IP: <input type="text" name="ip" /></p>
  <p><input type="submit" /></p>

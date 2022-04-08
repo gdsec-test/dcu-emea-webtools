@@ -1,5 +1,5 @@
 <?php 
-    $version = "3.1"
+    $version = "4.0"
     /* URL-Checker 
     DO NOT any manual changes to this code. It will be vanished with next deployment.
     Codebase: https://github.com/gdcorp-infosec/dcu-emea-webtools
@@ -8,30 +8,26 @@
         AS number for the ip address (based on geo-ip),
         abuse contact for ip (based on abusix),
         http status code for given URL
-    Update 3.0: supports saving records to database with various incidents */
+    Update 3.0: supports saving records to database with various incidents
+    Update 4.0: supports transmission to PhishStory API */
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="../common/ig_main.css" type="text/css">
+        <?php include "../common/gdstyles.html"; ?>
     </head>
     <body>
+    <?php include "../common/gdicon.html"; ?>
         <h3>URL Checker <?php echo $version ?></h3>
         <?php
             if ($_SERVER["REQUEST_METHOD"] === "GET"){
-        ?>
-                <form id="1" action="index.php" method="post">
-                    <label for="url">URL</label>
-                    <textarea id="url" name="url" rows="10" cols="50"><?php if ($_GET["action"] === "recheck" && isset($_GET["url"])) { echo base64_decode($_GET["url"]); } ?></textarea></p>
-                    <p><label for="useragent">Multiple User Agents: </label>
-                    <input type="checkbox" name="useragent" value="mobile"></p>
-                    <p><input type="submit" name="analyze" value="analyze" /></p>
-                </form>
-        <?php
-        }
+                include "form.php";
+            }
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["analyze"])) {
             include("analyze.php");
         } elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["history"])) {
             include("history.php");
+        } elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["sendtous"])) {
+            include("sendtous.php");
         }
 
         function sanitize($data) {

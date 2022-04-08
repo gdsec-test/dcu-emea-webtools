@@ -1,9 +1,10 @@
 <html>
     <head>
-        <link rel="stylesheet" href="common/ig_main.css" type="text/css">
+        <?php include "common/gdstyles.html"; ?>
     </head>
     <body>
         <?php
+            include "common/gdicon.html";
             // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // can be used for debugging purposes. Passes mysql errors towards php
             require_once("common/uceconnect.php");
             $certq1 = "SELECT COUNT(address) AS hits, module, max(last) AS last FROM certbund.listing WHERE done = '0' GROUP BY module ORDER BY module ASC;";
@@ -35,12 +36,12 @@
             </tr>
             <tr>
                 <td style="display: block" id="dcu">
-                    <a href="abuse/index.php" target="_new">Re-Open closed abuse cases (restricted)</a><br />
-                    <a href="iphistory/index.php" target="_new">Routing history for additional/net ips (restricted)</a><br />
-                    <a href="uceprotect/index.php" target="_new">Overview of current UCEprotect listings (restricted)</a><br />
-                    <a href="urlcheck/index.php" target="_new">URL De-Sanitizer/Checker</a><br />
-                    <a href="urlhistory/index.php" target="_new">URL Tracker</a><br />
-                    <a href="whitelist/index.php" target="_new">Abuse Whitelist S4Y (restricted)</a><br />
+                    <a href="abuse/index.php" target="_blank" rel="noopener">Re-Open closed abuse cases (restricted)</a><br />
+                    <a href="iphistory/index.php" target="_blank" rel="noopener">Routing history for additional/net ips (restricted)</a><br />
+                    <a href="uceprotect/index.php" target="_blank" rel="noopener">Overview of current UCEprotect listings (restricted)</a><br />
+                    <a href="urlcheck/index.php" target="_blank" rel="noopener">URL De-Sanitizer/Checker</a><br />
+                    <a href="urlhistory/index.php" target="_blank" rel="noopener">URL Tracker</a><br />
+                    <a href="whitelist/index.php" target="_blank" rel="noopener">Abuse Whitelist S4Y (restricted)</a><br />
                 </td>
             </tr>
             <tr>
@@ -53,12 +54,12 @@
             </tr>
             <tr>
                 <td style="display: block" id="s4u">
-                    <a href="https://tools.ig.mass.systems/abuse-manager/" target="_new">S4Y Abuse Manager</a><br />
-                    <a href="https://tools.ig.mass.systems/infotool" target="_new">S4Y Infotool</a><br />
-                    <a href="https://tools.ig.mass.systems/sm" target="_new">S4Y ServerManager</a><br />
-                    <a href="https://tools.ig.mass.systems/ipm" target="_new">S4Y IP Manager</a><br />
-                    <a href="https://tools.ig.mass.systems/blockingmanagement" target="_new">S4Y Blockingmanager</a><br />
-                    <a href="https://otrs.privatnetz.org/otrs/index.pl" target="_new">OTRS Ticket System</a><br />
+                    <a href="https://tools.ig.mass.systems/abuse-manager/" target="_blank" rel="noopener">S4Y Abuse Manager</a><br />
+                    <a href="https://tools.ig.mass.systems/infotool" target="_blank" rel="noopener">S4Y Infotool</a><br />
+                    <a href="https://tools.ig.mass.systems/sm" target="_blank" rel="noopener">S4Y ServerManager</a><br />
+                    <a href="https://tools.ig.mass.systems/ipm" target="_blank" rel="noopener">S4Y IP Manager</a><br />
+                    <a href="https://tools.ig.mass.systems/blockingmanagement" target="_blank" rel="noopener">S4Y Blockingmanager</a><br />
+                    <a href="https://otrs.privatnetz.org/otrs/index.pl" target="_blank" rel="noopener">OTRS Ticket System</a><br />
                 </td>
             </tr>
         </table>

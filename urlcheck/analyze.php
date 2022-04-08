@@ -74,9 +74,11 @@
     ?>
     <p><form id="1" action="index.php" method="post">
         <label for="url">URL</label>
-        <textarea id="url" name="url" rows="10" cols="50"><?php if (is_array($arr)) { for ($j = 0; $j < count($arr); $j++) { echo "{$arr[$j]} \r\n"; }} ?></textarea></p>
+        <textarea id="url" name="url" rows="10" cols="50"><?php if (is_array($arr)) { for ($j = 0; $j < count($arr); $j++) { echo "{$arr[$j]}"; if ($j < count($arr)-1) { echo "\r\n"; }}} ?></textarea></p>
         <p><label for="useragent">Multiple User Agents: </label>
         <input type="checkbox" name="useragent" value="mobile" /></p>
+        <p><input type="submit" name="analyze" value="analyze" /></p>
+        <hr />
         <input type="radio" name="module" id="malware" value="malware" />
         <label for="malware">Malware</label><br />
         <input type="radio" name="module" id="phishing" value="phishing" />
@@ -84,7 +86,21 @@
         <input type="radio" name="module" id="copyright" value="copyright" />
         <label for="copyright">Copyright/Trademark</label><br />
         <input type="submit" name="history" value="archive" />
-        <p><input type="submit" name="analyze" value="analyze" /></p>
+        <hr />
+        <p><label for="reason">Reason to send:</label>
+        <select id="reason" name="reason">
+            <option disabled selected>--- please choose ---</option>
+            <option value="A_RECORD">A-Record</option>
+            <option value="CHILD_ABUSE">CSAM</option>
+            <option value="CONTENT">Content</option>
+            <option value="FRAUD_WIRE">Fraud Wire</option>
+            <option value="IP_BLOCK">IP Block</option>
+            <option value="MALWARE">Malware</option>
+            <option value="NETWORK_ABUSE">Network Abuse</option>
+            <option value="PHISHING">Phishing</option>
+            <option value="SPAM">Spam</option>
+        </select><br />
+        <input type="submit" name="sendtous" value="send to PhishStory" /></p>
     </form>
     <?php
 ?>

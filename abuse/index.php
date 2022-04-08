@@ -1,8 +1,9 @@
 <html>
 <head>
-  <link rel="stylesheet" href="../common/ig_main.css" type="text/css">
+    <?php include "../common/gdstyles.html"; ?>
 </head>
 <body>
+<?php include "../common/gdicon.html"; ?>
 <h3>Closed Abuse Issues</h3>
 <form action="index.php" method="get">
  <p>Abuse ID: <input type="text" name="aid" /></p>
