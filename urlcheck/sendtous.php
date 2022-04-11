@@ -17,7 +17,7 @@
         $APIKEY = $OTEAPIKEY;
         $APISECRET = $OTEAPISECRET;
         $url = "https://api.ote-godaddy.com/v1/abuse/tickets";
-    } elseif (preg_match('/(\/var\/www\/dcu$)/', getcwd())){
+    } elseif (preg_match('/(\/var\/www\/dcu\/)/', getcwd())){
         $APIKEY = $PRDAPIKEY;
         $APISECRET = $PRDAPISECRET;
         $url = "https://api.godaddy.com/v1/abuse/tickets";
