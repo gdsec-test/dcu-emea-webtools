@@ -1,5 +1,5 @@
 <?php 
-    $version = "4.0"
+    $version = "4.1"
     /* URL-Checker 
     DO NOT any manual changes to this code. It will be vanished with next deployment.
     Codebase: https://github.com/gdcorp-infosec/dcu-emea-webtools
@@ -28,7 +28,10 @@
             include("history.php");
         } elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["sendtous"])) {
             include("sendtous.php");
+        } elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["abusecontact"])) {
+            include("abusec.php");
         }
+
 
         function sanitize($data) {
             $data = trim($data, " \n\r\t\v\x00");

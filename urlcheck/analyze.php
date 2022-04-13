@@ -100,7 +100,9 @@
             <option value="PHISHING">Phishing</option>
             <option value="SPAM">Spam</option>
         </select><br />
-        <input type="submit" name="sendtous" value="send to PhishStory" /></p>
+        <input type="submit" name="sendtous" value="send to PhishStory" />
+        <input type="hidden" name="abusec" value="<?php echo $abusec[0]['entries'][0]; ?>" />
+        <input type="submit" name="abusecontact" value="send to abuse-c" /></p>
     </form>
     <?php
 ?>
