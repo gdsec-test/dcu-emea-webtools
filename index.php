@@ -41,6 +41,7 @@
                     <a href="uceprotect/index.php" target="_blank" rel="noopener">Overview of current UCEprotect listings (restricted)</a><br />
                     <a href="urlcheck/index.php" target="_blank" rel="noopener">URL De-Sanitizer/Checker</a><br />
                     <a href="urlhistory/index.php" target="_blank" rel="noopener">URL Tracker</a><br />
+                    <a href="cbhistory/index.php" target="_blank" rel="noopener">CERT-Bund History Reports</a><br />
                     <a href="whitelist/index.php" target="_blank" rel="noopener">Abuse Whitelist S4Y (restricted)</a><br />
                 </td>
             </tr>
