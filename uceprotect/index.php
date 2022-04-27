@@ -10,6 +10,7 @@
 </form>
 <?php
 require_once('../common/uceconnect.php');
+require_once('chart.php');
 
 //INPUT
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,6 +18,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 else {
     echo "<h2>Current uceprotect listings</h2>";
+    $data = [];
+    $sql = "SELECT date, COUNT(*) AS data FROM `uceprotect`.`archive` GROUP BY YEAR(date), MONTH(date), DAY(date);";
+    $result = $connection->query($sql);
+    while($row = $result->fetch_assoc()) {
+        array_push($data, $row['data']);
+    }
+    $chart = new Chart();
+    $chart->setPixelSize(600, 100, 2);
+    $chart->setMinMaxY(0, max($data));
+    $chart->setMinMaxX(0,365,12);
+    $errorMessage = $chart->addNewLine(0, 255, 0);
+    foreach ($data as $i=>$value) {
+        $errorMessage = $chart->setPoint($i, $value, '');
+    }
+    $chart->show(5);
     $sql = "SELECT address, host, hits, first, last FROM uceprotect.listing WHERE done = '0' ORDER BY hits DESC;";
     $result = $connection->query($sql);
     if ($result->num_rows > 0) {
