@@ -14,6 +14,10 @@
         );
     }
     for ($i = 0; $i < count($arr); $i++) {
+        if (is_int(strpos($arr[$i], "safelinks.protection.outlook.com"))){
+            $temphost = explode("?", explode("url=", urldecode($arr[$i]))[1]);
+            $arr[$i] = $temphost[0];
+        }
         $host = parse_url($arr[$i], PHP_URL_HOST);
         if (!is_string($host)) {
             $scheme = "http://";
