@@ -12,11 +12,15 @@
 
             // initial all needed arrays
             $bluekeep = [];
+            $cldap = [];
             $elasticsearch = [];
             $emotet = [];
+            $ipp = [];
             $malware = [];
             $memcached = [];
+            $mongodb = [];
             $mssql = [];
+            $netbios = [];
             $opendns = [];
             $portmapper = [];
             $redis = [];
@@ -24,11 +28,15 @@
             $ssdp = [];
             $telnet = [];
             $bluekeep_data = [];
+            $cldap_data = [];
             $elastic_data = [];
             $emotet_data = [];
+            $ipp_data = [];
             $malware_data = [];
             $memcached_data = [];
+            $mongodb_data = [];
             $mssql_data = [];
+            $netbios_data = [];
             $opendns_data = [];
             $portmapper_data = [];
             $redis_data = [];
@@ -45,6 +53,10 @@
                             $bluekeep += array("{$row['y']}-{$row['m']}" => $row['hits']);
                             array_push($bluekeep_data, $row['hits']);
                             break;
+                        case "cldap":
+                            $cldap += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
+                            array_push($cldap_data, $row['hits']);
+                            break;
                         case "elasticsearch":
                             $elasticsearch += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
                             array_push($elastic_data, $row['hits']);
@@ -52,6 +64,10 @@
                         case "emotet":
                             $emotet += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
                             array_push($emotet_data, $row['hits']);
+                            break;
+                        case "ipp":
+                            $ipp += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
+                            array_push($ipp_data, $row['hits']);
                             break;
                         case "malware":
                             $malware += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
@@ -61,9 +77,17 @@
                             $memcached += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
                             array_push($memcached_data, $row['hits']);
                             break;
+                        case "mongodb":
+                            $mongodb += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
+                            array_push($mongodb_data, $row['hits']);
+                            break;
                         case "mssql":
                             $mssql += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
                             array_push($mssql_data, $row['hits']);
+                            break;
+                        case "netbios":
+                            $netbios += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
+                            array_push($netbios_data, $row['hits']);
                             break;
                         case "opendns":
                             $opendns += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
@@ -102,6 +126,14 @@
             foreach ($bluekeep_data as $i=>$value) {
                 $errorMessage = $bluekeep_chart->setPoint($i, $value, '');
             }
+            $cldap_chart = new Chart();
+            $cldap_chart->setPixelSize(600, 100, 2);
+            $cldap_chart->setMinMaxY(0, max($cldap_data));
+            $cldap_chart->setMinMaxX(0,12,3);
+            $errorMessage = $cldap_chart->addNewLine(0, 255, 0);
+            foreach ($cldap_data as $i=>$value) {
+                $errorMessage = $cldap_chart->setPoint($i, $value, '');
+            }
             $elastic_chart = new Chart();
             $elastic_chart->setPixelSize(600, 100, 2);
             $elastic_chart->setMinMaxY(0, max($elastic_data));
@@ -117,6 +149,14 @@
             $errorMessage = $emotet_chart->addNewLine(0, 255, 0);
             foreach ($emotet_data as $i=>$value) {
                 $errorMessage = $emotet_chart->setPoint($i, $value, '');
+            }
+            $ipp_chart = new Chart();
+            $ipp_chart->setPixelSize(600, 100, 2);
+            $ipp_chart->setMinMaxY(0, max($ipp_data));
+            $ipp_chart->setMinMaxX(0,12,3);
+            $errorMessage = $ipp_chart->addNewLine(0, 255, 0);
+            foreach ($ipp_data as $i=>$value) {
+                $errorMessage = $ipp_chart->setPoint($i, $value, '');
             }
             $malware_chart = new Chart();
             $malware_chart->setPixelSize(600, 100, 2);
@@ -134,6 +174,14 @@
             foreach ($memcached_data as $i=>$value) {
                 $errorMessage = $memcached_chart->setPoint($i, $value, '');
             }
+            $mongodb_chart = new Chart();
+            $mongodb_chart->setPixelSize(600, 100, 2);
+            $mongodb_chart->setMinMaxY(0, max($mongodb_data));
+            $mongodb_chart->setMinMaxX(0,12,3);
+            $errorMessage = $mongodb_chart->addNewLine(0, 255, 0);
+            foreach ($mongodb_data as $i=>$value) {
+                $errorMessage = $mongodb_chart->setPoint($i, $value, '');
+            }
             $mssql_chart = new Chart();
             $mssql_chart->setPixelSize(600, 100, 2);
             $mssql_chart->setMinMaxY(0, max($mssql_data));
@@ -141,6 +189,14 @@
             $errorMessage = $mssql_chart->addNewLine(0, 255, 0);
             foreach ($mssql_data as $i=>$value) {
                 $errorMessage = $mssql_chart->setPoint($i, $value, '');
+            }
+            $netbios_chart = new Chart();
+            $netbios_chart->setPixelSize(600, 100, 2);
+            $netbios_chart->setMinMaxY(0, max($netbios_data));
+            $netbios_chart->setMinMaxX(0,12,3);
+            $errorMessage = $netbios_chart->addNewLine(0, 255, 0);
+            foreach ($netbios_data as $i=>$value) {
+                $errorMessage = $netbios_chart->setPoint($i, $value, '');
             }
             $opendns_chart = new Chart();
             $opendns_chart->setPixelSize(600, 100, 2);
@@ -211,6 +267,25 @@
             echo "</tr></table>";
             $bluekeep_chart->show(5);
 
+            echo "<h4>cLDAP</h4>";
+            echo "<table><tr>";
+            $keys = array_keys($cldap);
+            for ($i=0; $i<12; $i++){
+                echo "<th>{$keys[$i]}</th>";
+            }
+            echo "</tr><tr>";
+            for ($i=0; $i<12; $i++){
+                if($cldap[$keys[$i]] > $cldap[$keys[$i-1]]){
+                    echo "<td style=\"color:#ff0000\">{$cldap[$keys[$i]]}</td>";
+                } elseif ($cldap[$keys[$i]] < $cldap[$keys[$i-1]]){
+                    echo "<td style=\"color:#00ff00\">{$cldap[$keys[$i]]}</td>";
+                } else {
+                    echo "<td>{$cldap[$keys[$i]]}</td>";
+                }
+            }
+            echo "</tr></table>";
+            $cldap_chart->show(5);
+
             echo "<h4>Elasticsearch</h4>";
             echo "<table><tr>";
             $keys = array_keys($elasticsearch);
@@ -248,6 +323,25 @@
             }
             echo "</tr></table>";
             $emotet_chart->show(5);
+
+            echo "<h4>IPP printer service</h4>";
+            echo "<table><tr>";
+            $keys = array_keys($ipp);
+            for ($i=0; $i<12; $i++){
+                echo "<th>{$keys[$i]}</th>";
+            }
+            echo "</tr><tr>";
+            for ($i=0; $i<12; $i++){
+                if($ipp[$keys[$i]] > $ipp[$keys[$i-1]]){
+                    echo "<td style=\"color:#ff0000\">{$ipp[$keys[$i]]}</td>";
+                } elseif ($ipp[$keys[$i]] < $ipp[$keys[$i-1]]){
+                    echo "<td style=\"color:#00ff00\">{$ipp[$keys[$i]]}</td>";
+                } else {
+                    echo "<td>{$ipp[$keys[$i]]}</td>";
+                }
+            }
+            echo "</tr></table>";
+            $ipp_chart->show(5);
 
             echo "<h4>Malware</h4>";
             echo "<table><tr>";
@@ -287,6 +381,25 @@
             echo "</tr></table>";
             $memcached_chart->show(5);
 
+            echo "<h4>MongoDB</h4>";
+            echo "<table><tr>";
+            $keys = array_keys($mongodb);
+            for ($i=0; $i<12; $i++){
+                echo "<th>{$keys[$i]}</th>";
+            }
+            echo "</tr><tr>";
+            for ($i=0; $i<12; $i++){
+                if($mongodb[$keys[$i]] > $mongodb[$keys[$i-1]]){
+                    echo "<td style=\"color:#ff0000\">{$mongodb[$keys[$i]]}</td>";
+                } elseif ($mongodb[$keys[$i]] < $mongodb[$keys[$i-1]]){
+                    echo "<td style=\"color:#00ff00\">{$mongodb[$keys[$i]]}</td>";
+                } else {
+                    echo "<td>{$mongodb[$keys[$i]]}</td>";
+                }
+            }
+            echo "</tr></table>";
+            $mongodb_chart->show(5);
+
             echo "<h4>MS-SQL</h4>";
             echo "<table><tr>";
             $keys = array_keys($mssql);
@@ -305,6 +418,25 @@
             }
             echo "</tr></table>";
             $mssql_chart->show(5);
+
+            echo "<h4>NetBIOS</h4>";
+            echo "<table><tr>";
+            $keys = array_keys($netbios);
+            for ($i=0; $i<12; $i++){
+                echo "<th>{$keys[$i]}</th>";
+            }
+            echo "</tr><tr>";
+            for ($i=0; $i<12; $i++){
+                if($netbios[$keys[$i]] > $netbios[$keys[$i-1]]){
+                    echo "<td style=\"color:#ff0000\">{$netbios[$keys[$i]]}</td>";
+                } elseif ($netbios[$keys[$i]] < $netbios[$keys[$i-1]]){
+                    echo "<td style=\"color:#00ff00\">{$netbios[$keys[$i]]}</td>";
+                } else {
+                    echo "<td>{$netbios[$keys[$i]]}</td>";
+                }
+            }
+            echo "</tr></table>";
+            $netbios_chart->show(5);
 
             echo "<h4>OpenDNS</h4>";
             echo "<table><tr>";
