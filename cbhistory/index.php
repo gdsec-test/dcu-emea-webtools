@@ -27,6 +27,7 @@
             $snmp = [];
             $ssdp = [];
             $telnet = [];
+	        $mdns = [];
             $bluekeep_data = [];
             $cldap_data = [];
             $elastic_data = [];
@@ -43,7 +44,7 @@
             $snmp_data = [];
             $ssdp_data = [];
             $telnet_data = [];
-
+	        $mdns_data = [];
             $sql = "SELECT COUNT(*) AS hits, module, YEAR(date) AS y, MONTH(date) AS m FROM `certbund`.`archive` GROUP BY y, m, module ORDER BY module, m ASC;";
             $result = $connection->query($sql);
             if ($result->num_rows > 0) {
@@ -52,6 +53,10 @@
                         case "bluekeep":
                             $bluekeep += array("{$row['y']}-{$row['m']}" => $row['hits']);
                             array_push($bluekeep_data, $row['hits']);
+                            break;
+                        case "mdns":
+                            $mdns += array("{$row['y']}-{$row['m']}" => $row['hits']);
+                            array_push($mdns_data, $row['hits']);
                             break;
                         case "cldap":
                             $cldap += array("{$row['y']}-{$row['m']}" => "{$row['hits']}");
@@ -125,6 +130,14 @@
             $errorMessage = $bluekeep_chart->addNewLine(0, 255, 0);
             foreach ($bluekeep_data as $i=>$value) {
                 $errorMessage = $bluekeep_chart->setPoint($i, $value, '');
+            }
+            $mdns_chart = new Chart();
+            $mdns_chart->setPixelSize(600, 100, 2);
+            $mdns_chart->setMinMaxY(0, max($mdns_data));
+            $mdns_chart->setMinMaxX(0,12,3);
+            $errorMessage = $mdns_chart->addNewLine(0, 255, 0);
+            foreach ($mdns_data as $i=>$value) {
+                $errorMessage = $mdns_chart->setPoint($i, $value, '');
             }
             $cldap_chart = new Chart();
             $cldap_chart->setPixelSize(600, 100, 2);
@@ -266,6 +279,25 @@
             }
             echo "</tr></table>";
             $bluekeep_chart->show(5);
+            
+            echo "<h4>mDNS</h4>";
+            echo "<table><tr>";
+            $keys = array_keys($mdns);
+            for ($i=0; $i<12; $i++){
+                echo "<th>{$keys[$i]}</th>";
+            }
+            echo "</tr><tr>";
+            for ($i=0; $i<12; $i++){
+                if($mdns[$keys[$i]] > $mdns[$keys[$i-1]]){
+                    echo "<td style=\"color:#ff0000\">{$mdns[$keys[$i]]}</td>";
+                } elseif ($mdns[$keys[$i]] < $mdns[$keys[$i-1]]){
+                    echo "<td style=\"color:#00ff00\">{$mdns[$keys[$i]]}</td>";
+                } else {
+                    echo "<td>{$mdns[$keys[$i]]}</td>";
+                }
+            }
+            echo "</tr></table>";
+            $mdns_chart->show(5);
 
             echo "<h4>cLDAP</h4>";
             echo "<table><tr>";
@@ -285,7 +317,7 @@
             }
             echo "</tr></table>";
             $cldap_chart->show(5);
-
+            
             echo "<h4>Elasticsearch</h4>";
             echo "<table><tr>";
             $keys = array_keys($elasticsearch);
